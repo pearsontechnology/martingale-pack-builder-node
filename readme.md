@@ -57,7 +57,7 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
   -d DESTFILENAME, --dest DESTFILENAME, --dest-file DESTFILENAME
               Base name of the destination file to provide. Default "/pack"
   -p PORT, --port PORT  
-              Port to use. Default 8080
+              Port to use. Default 8080, use 0 to select a random available port.
   -c CORS, --cors CORS  
               Sets the Access-Control-Allow-Origin header. Default *
   --host HOST           

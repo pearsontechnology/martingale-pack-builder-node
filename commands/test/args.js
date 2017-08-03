@@ -22,7 +22,7 @@ module.exports = (ap)=>{
   argParser.addArgument(
     ['-p', '--port'],
     {
-      help: 'Port to use.  Default 8080',
+      help: 'Port to use.  Default 8080, use 0 to select a random available port.',
       type: 'int',
       dest: 'port',
       defaultValue: 8080
