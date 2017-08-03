@@ -38,13 +38,26 @@ argParser.addArgument(
     defaultValue: 'yaml'
   }
 );
+argParser.addArgument(
+  ['-l', '--log', '--log-level'],
+  {
+    help: 'Minimum log level to show.  Default "debug"',
+    type: 'string',
+    dest: 'minLogLevel',
+    defaultValue: 'debug'
+  }
+);
 
 const args = argParser.parseArgs();
 
 const {
   sourceFilename,
-  outputFormat
+  outputFormat,
+  minLogLevel
 } = args;
+
+logger.minLevel = logger.levelOf(minLogLevel);
+
 const destFilename = args.destFilename || `dist/pack.${outputFormat}`;
 
 const sourceFile = Path.resolve(sourceFilename);

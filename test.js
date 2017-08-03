@@ -21,21 +21,75 @@ argParser.addArgument(
     defaultValue: 'pack.yaml'
   }
 );
+argParser.addArgument(
+  ['-d', '--dest', '--dest-file'],
+  {
+    help: 'Base name of the destination file to provide.  Default "/pack"',
+    type: 'string',
+    dest: 'destFilename',
+    defaultValue: '/pack'
+  }
+);
+argParser.addArgument(
+  ['-p', '--port'],
+  {
+    help: 'Port to use.  Default 8080',
+    type: 'int',
+    dest: 'port',
+    defaultValue: 8080
+  }
+);
+argParser.addArgument(
+  ['-c', '--cors'],
+  {
+    help: 'Sets the Access-Control-Allow-Origin header.  Default *',
+    type: 'string',
+    dest: 'cors',
+    defaultValue: '*'
+  }
+);
+argParser.addArgument(
+  ['--host'],
+  {
+    help: 'Hostname to bind to.  Defaults to system name',
+    type: 'string',
+    dest: 'host',
+  }
+);
+argParser.addArgument(
+  ['-l', '--log', '--log-level'],
+  {
+    help: 'Minimum log level to show.  Default "debug"',
+    type: 'string',
+    dest: 'minLogLevel',
+    defaultValue: 'debug'
+  }
+);
 
 const args = argParser.parseArgs();
 
 const {
-  sourceFilename
+  sourceFilename,
+  destFilename,
+  port,
+  host,
+  cors,
+  minLogLevel
 } = args;
+
+logger.minLevel = logger.levelOf(minLogLevel);
+
+const cors_origin = cors.split(',').map(c=>c.trim());
 
 const sourceFile = Path.resolve(sourceFilename);
 
 const server = new Hapi.Server();
 server.connection({
-  port: 8081,
+  port,
+  host,
   routes: {
     cors: {
-      origin: ['*']
+      origin: cors_origin
     }
   }
 });
@@ -43,7 +97,7 @@ server.connection({
 server.route([
   {
     method: 'get',
-    path: '/pack.json',
+    path: destFilename+'.json',
     handler(req, reply){
       builder({sourceFile}, (err, doc)=>{
         if(err){
@@ -56,7 +110,7 @@ server.route([
   },
   {
     method: 'get',
-    path: '/pack.yaml',
+    path: destFilename+'.yaml',
     handler(req, reply){
       builder({sourceFile}, (err, doc)=>{
         if(err){
