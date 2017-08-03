@@ -90,6 +90,29 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
               Minimum log level to show. Default "debug"
 ```
 
+### Test
+
+Used to split an existing pack file back in to manageable source files.
+
+#### Usage:
+
+From within your Pack source folder:
+
+```
+mpack split [-h] [-s SOURCEFILENAME] [-d DESTFILENAME]
+```
+
+#### Optional arguments:
+
+```
+  -h, --help
+                        Show this help message and exit.
+  -s SOURCEFILENAME, --source SOURCEFILENAME, --source-file SOURCEFILENAME
+                        Name of the source file to process. Default "pack.yaml"
+  -d DESTFILENAME, --dest DESTFILENAME, --dest-file DESTFILENAME
+                        Base name of the destination file to provide. Default "pack.yaml"
+```
+
 ## Project Setup
 
 To start a new Pack create a new folder, then create a package.json file in the new folder.  Copy the below template and update the values in to package.json:
