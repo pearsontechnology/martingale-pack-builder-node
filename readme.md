@@ -65,3 +65,39 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
   -l MINLOGLEVEL, --log MINLOGLEVEL, --log-level MINLOGLEVEL
               Minimum log level to show. Default "debug"
 ```
+
+## Project Setup
+
+To start a new Pack create a new folder, then create a package.json file in the new folder.  Copy the below template and update the values in to package.json:
+
+```
+{
+  "name": "your-package-name",
+  "version": "0.0.1",
+  "description": "Some description about what your pack does",
+  "repository": "The repo that belongs to your pack",
+  "author": "Your Name <your@email.com>",
+  "scripts": {
+    "build": "mpack build",
+    "test": "mpack test"
+  },
+  "dependencies": {
+    "martingale-pack-builder": "^0.0.1"
+  },
+  "license": "MIT"
+}
+```
+
+On the command line, in the folder where you created the package.json file issue:
+
+```
+npm install
+```
+
+or
+
+```
+yarn install
+```
+
+You can now use "yarn/npm test" and "yarn/npm build" commands to test your pack locally or create a production build of your pack.
