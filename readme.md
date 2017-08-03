@@ -2,7 +2,7 @@
 
 Used to test and create Pack distributions from source files for Martingale Packs.
 
-## Scripts
+## Commands
 
 ### Build
 
@@ -13,7 +13,7 @@ Used to compile raw pack files into an official yaml or json pack file.
 From within your Pack source folder:
 
 ```
-node path/to/build.js [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-l MINLOGLEVEL]
+mpack build [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-l MINLOGLEVEL]
 ```
 
 #### Optional arguments:
@@ -42,7 +42,7 @@ Used to provide a simple web server based distribution for testing your pack loc
 From within your Pack source folder:
 
 ```
-node path/to/test.js [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [--host HOST] [-l MINLOGLEVEL]
+mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [--host HOST] [-l MINLOGLEVEL]
 ```
 
 #### Optional arguments:

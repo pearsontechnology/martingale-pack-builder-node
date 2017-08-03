@@ -1,54 +1,12 @@
 const ArgParse = require('argparse').ArgumentParser;
-const builder = require('./lib/builder');
+const builder = require('../../lib/builder');
 const Path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const pjson = require('./package.json');
-const logger = require('./lib/logger');
+const logger = require('../../lib/logger');
 const YAML = require('js-yaml');
 
-const argParser = new ArgParse({
-  version: pjson.version,
-  addHelp: true,
-  description: pjson.description
-});
-argParser.addArgument(
-  ['-s', '--source', '--source-file'],
-  {
-    help: 'Name of the source file to process.  Default "pack.yaml"',
-    type: 'string',
-    dest: 'sourceFilename',
-    defaultValue: 'pack.yaml'
-  }
-);
-argParser.addArgument(
-  ['-d', '--dest', '--destination', '--destination-file'],
-  {
-    help: 'Name of the output file. Default "dist/pack.<outputFormat>"',
-    dest: 'destFilename',
-    type: 'string'
-  }
-);
-argParser.addArgument(
-  ['-o', '--outputFormat', '--output-format'],
-  {
-    help: 'Specifies the output format.  Default "yaml"',
-    dest: 'outputFormat',
-    type: 'string',
-    defaultValue: 'yaml'
-  }
-);
-argParser.addArgument(
-  ['-l', '--log', '--log-level'],
-  {
-    help: 'Minimum log level to show.  Default "debug"',
-    type: 'string',
-    dest: 'minLogLevel',
-    defaultValue: 'debug'
-  }
-);
-
-const args = argParser.parseArgs();
+const args = require('../../lib/args');
 
 const {
   sourceFilename,
