@@ -5,6 +5,10 @@
   "main": "build.js",
   "author": "Jeremy Darling <jeremy.darling@pearson.com>",
   "license": "MIT",
+  "bin": {
+    "mp-build": "build.js",
+    "mp-test": "test.js",
+  },
   "dependencies": {
     "argparse": "^1.0.9",
     "async": "^2.5.0",
