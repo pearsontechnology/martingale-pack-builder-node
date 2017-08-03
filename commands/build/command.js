@@ -42,7 +42,7 @@ const writeJson = ({destFile, doc}, callback)=>{
 };
 
 const writeYaml = ({destFile, doc}, callback)=>{
-  fs.writeFile(destFile, YAML.safeDump(doc, null, 2), (err)=>{
+  fs.writeFile(destFile, YAML.safeDump(doc), (err)=>{
     if(err){
       logger.error(err);
       return process.exit(1);
