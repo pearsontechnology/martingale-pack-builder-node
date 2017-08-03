@@ -1,5 +1,7 @@
 # Martinglae {{pack.name}} Pack
 
+**Name:** {{pack.name}}
+
 {{pack.description}}
 
 {{#if pack.pages}}
