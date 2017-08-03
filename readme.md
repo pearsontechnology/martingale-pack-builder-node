@@ -4,6 +4,30 @@ Used to test and create Pack distributions from source files for Martingale Pack
 
 ## Commands
 
+### Doc
+
+Used to create a readme.md from the pack definition file.
+
+#### Usage:
+
+From within your Pack source folder:
+
+```
+mpack doc [-h] [-s SOURCEFILENAME] [-d DESTFILENAME] [-t TEMPLATEFILE]
+```
+
+#### Optional arguments:
+```
+  -h, --help            
+                        Show this help message and exit.
+  -s SOURCEFILENAME, --source SOURCEFILENAME, --source-file SOURCEFILENAME
+                        Name of the source file to process. Default "pack.yaml"
+  -d DESTFILENAME, --dest DESTFILENAME, --dest-file DESTFILENAME
+                        Base name of the destination file to provide. Default "readme.md"
+  -t TEMPLATEFILE, --template TEMPLATEFILE, --template-file TEMPLATEFILE
+                        Handlebars template file to process, use internal one if not specified.
+```
+
 ### Build
 
 Used to compile raw pack files into an official yaml or json pack file.
@@ -96,7 +120,7 @@ npm install
 
 or
 
-```
+````
 yarn install
 ```
 
