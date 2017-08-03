@@ -103,7 +103,8 @@ To start a new Pack create a new folder, then create a package.json file in the 
   "author": "Your Name <your@email.com>",
   "scripts": {
     "build": "mpack build",
-    "test": "mpack test"
+    "test": "mpack test",
+    "doc": "mpack doc"
   },
   "dependencies": {
     "martingale-pack-builder": "^0.0.1"
@@ -120,8 +121,12 @@ npm install
 
 or
 
-````
+```
 yarn install
 ```
 
-You can now use "yarn/npm test" and "yarn/npm build" commands to test your pack locally or create a production build of your pack.
+You can now use:
+
+ * "yarn/npm test" to test your pack locally.
+ * "yarn/npm build" command to create a production build of your pack.
+ * "yarn/npm doc" to generate the documentation for your pack.
