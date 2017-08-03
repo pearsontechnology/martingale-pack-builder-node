@@ -90,7 +90,7 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
               Minimum log level to show. Default "debug"
 ```
 
-### Test
+### Split
 
 Used to split an existing pack file back in to manageable source files.
 
