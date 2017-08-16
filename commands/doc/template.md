@@ -4,6 +4,23 @@
 
 {{pack.description}}
 
+{{#if pack.config}}
+## Configuration Options
+
+{{#each pack.config}}
+### {{@key}}: {{description}}
+{{#if default}}**Default Value:** {{default}}{{/if}}
+
+{{/each}}
+{{/if}}
+{{#if pack.externalScripts}}
+## External Dependencies
+
+{{#each pack.externalScripts}}
+ * {{this}}
+{{/each}}
+
+{{/if}}
 {{#if pack.pages}}
 ## Included Pages
 {{#each pack.pages}}
