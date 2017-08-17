@@ -1,7 +1,10 @@
 const args = require('../../lib/args');
 const Path = require('path');
+const fs = require('fs');
 const {Docker} = require('rouster');
 const async = require('async');
+const YAML = require('js-yaml');
+const logger = require('../../lib/logger');
 
 const {
   port,
@@ -41,14 +44,6 @@ if(args.verbose){
 }
 docker.on('stderr', stderr);
 docker.on('stdout', stdout);
-
-const dockerArgs = [
-  args.shell||'/bin/bash',
-  '-v', `${sourcePath}:/app/pack`,
-  '-v', `${mpackPath}:/app/mpack_src`,
-  '-p', `${port}:${port}`,
-  '-w', '/app/pack',
-];
 
 const reformCommand = (cmd)=>{
   var res = cmd.match(/"[^"]*"|'[^']*'|[^ \t]+/g);
@@ -97,24 +92,57 @@ const done = (err)=>{
   return process.exit(0);
 };
 
-/*
-const shutdown = ()=>{
-  docker.off('stderr', stderr);
-  docker.off('stdout', stdout);
-  docker.kill((err, output)=>{
-    if(err){
-      console.error('Kill Error: ', err);
-    }
-    console.log('Removing instance');
-    return docker.rm(done);
-  });
-};
-*/
-
-docker.run(...dockerArgs, (err)=>{
+const start = (err, swagger)=>{
   if(err){
-    console.error('Docker Error:', err);
+    logger.error(err);
     return process.exit(1);
   }
-  async.eachOfSeries(commands, executeCommand, done);
-});
+  const packName = swagger.name.replace(/[ \t]+/g, '-');
+  const dockerArgs = [
+    args.shell||'/bin/bash',
+    '--name', `martingale-${packName}`,
+    '-v', `${sourcePath}:/app/pack`,
+    '-v', `${mpackPath}:/app/mpack_src`,
+    '-p', `${port}:${port}`,
+    '-w', '/app/pack',
+  ];
+
+  docker.run(...dockerArgs, (err)=>{
+    if(err){
+      console.error('Docker Error:', err);
+      return process.exit(1);
+    }
+    async.eachOfSeries(commands, executeCommand, done);
+  });
+};
+
+const loadYaml = ({source, path}, callback)=>{
+  return setImmediate(()=>callback(null, YAML.safeLoad(source)));
+};
+
+const loadJson = ({source, path}, callback)=>{
+  return setImmediate(()=>callback(null, JSON.parse(source)));
+};
+
+const loadTypedFile = ({sourceFile, path, handler}, callback)=>{
+  fs.readFile(sourceFile, (err, source)=>{
+    if(err){
+      return callback(err);
+    }
+    return handler({source, path}, callback);
+  });
+};
+
+const loadFile = ({sourceFile, path}, callback)=>{
+  const ext = Path.extname(sourceFile);
+  switch(ext.toLowerCase()){
+    case('.yaml'):
+      return loadTypedFile({sourceFile, path, handler: loadYaml}, callback);
+    case('.json'):
+      return loadTypedFile({sourceFile, path, handler: loadJson}, callback);
+    default:
+      return callback(new Error(`No loader available for file type ${ext}`));
+  }
+};
+
+loadFile({sourceFile, path: sourcePath}, start);
