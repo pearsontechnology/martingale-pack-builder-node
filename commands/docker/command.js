@@ -97,7 +97,7 @@ const start = (err, swagger)=>{
     logger.error(err);
     return process.exit(1);
   }
-  const packName = swagger.name.replace(/[ \t]+/g, '-');
+  const packName = swagger.name.replace(/[ \t]+/g, '-').toLowerCase();
   const dockerArgs = [
     args.shell||'/bin/bash',
     '--name', `martingale-${packName}`,
