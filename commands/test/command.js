@@ -2,6 +2,7 @@ const Path = require('path');
 const logger = require('../../lib/logger');
 const builder = require('../../lib/builder');
 const YAML = require('js-yaml');
+const Boom = require('boom');
 
 const Hapi = require('hapi');
 
@@ -53,8 +54,7 @@ server.route([
     handler(req, reply){
       builder({sourceFile}, (err, doc)=>{
         if(err){
-          logger.error(err);
-          return reply(err);
+          return reply({error: err.message});
         }
         return reply(YAML.safeDump(doc));
       });
