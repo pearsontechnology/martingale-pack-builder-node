@@ -1,10 +1,11 @@
 {
   "name": "martingale-pack-builder",
   "version": "0.0.1",
-  "description": "Used to compile raw pack files into an official yaml or json pack file",
+  "description":
+    "Used to compile raw pack files into an official yaml or json pack file",
   "main": "build.js",
   "author": "Jeremy Darling <jeremy.darling@pearson.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bin": {
     "mpack": "bin/mp.js"
   },
