@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '8'
+- '10'
+deploy:
+  provider: npm
+  email: jeremy.darling@gmail.com
+  api_key:
+    secure: aF9W1u/+0pjoWEj3DloxozQDnV3KLX7BPesVwly6384BeG93EnVJbLUIoCpXaCKImSlFUZ3MxwBn/KXbA+PZ23O8WE4pamEfnuSLEVDwh7obzP6NXaqne/k0sHqXX916f36ISY1StB06HlIMvCwFl7QQuhbDYjlHxKbAIX8E0LFTxNwTjhkK5GdHhnKv2eT2Qjkmh7yh5o7DakTqW7RLFTr+qhuOw36+nAXr3NujjTbJ0cqpDsY/Yyw5Q1bj+xoCCUGlSo5r+Y48+4KaKT4FBRrhoz3dFVPSDVOzVEw8EcXEox2l404FaRpaXdnOYP/u1AMusXGKEl+wFzpSljzNT2bwSzOIihPIS6IG5k0Glq/QTtMPF+vathe6I9l57Tr+wY01Qv4gxx78MkTOKJeuDstlGEWo1wn/t+NduRuORnjp6ilbH2aA3h+zJcNcxl7O+oTKZ+3sIfqIQd1ZTgA8jBcHc/pu9RqTB/6iMOqZG4f5jhS7S/jlfAiaMY5BlzbQRUGmUbsV2ymmAIfF5Pl9Arl4Cmkdqv4nLGeXdZ+E3U5Un6pm4nw1qEeB2WIvPIW9ccsT7vBfbljb8TkAgual4Rl7sk3zSqPmrO5g4Wa3gG4gula+EQZN9J0alytkB4BnbMl7fuPxPLoTIWgQYL5izGZPH7js03XKqqi9zorHrko=
+  on:
+    tags: true
+    repo: pearsontechnology/martingale-pack-builder-node
