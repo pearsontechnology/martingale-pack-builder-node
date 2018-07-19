@@ -1,5 +1,5 @@
 {
-  "name": "martingale-pack-builder",
+  "name": "@martingale/packs",
   "version": "0.0.1",
   "description":
     "Used to compile raw pack files into an official yaml or json pack file",

@@ -1,4 +1,4 @@
-# Martingale Pack Builder
+# Martingale Packs Manager
 
 Used to test and create Pack distributions from source files for Martingale Packs.
 
@@ -17,8 +17,9 @@ mpack doc [-h] [-s SOURCEFILENAME] [-d DESTFILENAME] [-t TEMPLATEFILE]
 ```
 
 #### Optional arguments:
+
 ```
-  -h, --help            
+  -h, --help
                         Show this help message and exit.
   -s SOURCEFILENAME, --source SOURCEFILENAME, --source-file SOURCEFILENAME
                         Name of the source file to process. Default "pack.yaml"
@@ -43,9 +44,9 @@ mpack build [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-
 #### Optional arguments:
 
 ```
-  -h, --help            
+  -h, --help
               Show this help message and exit.
-  -v, --version         
+  -v, --version
               Show program's version number and exit.
   -s SOURCEFILENAME, --source SOURCEFILENAME, --source-file SOURCEFILENAME
               Name of the source file to process. Default "pack.yaml"
@@ -59,7 +60,7 @@ mpack build [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-
 
 ### Test
 
-Used to provide a simple web server based distribution for testing your pack locally.  Compiles and serves the final pack file on every request.
+Used to provide a simple web server based distribution for testing your pack locally. Compiles and serves the final pack file on every request.
 
 #### Usage:
 
@@ -72,9 +73,9 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
 #### Optional arguments:
 
 ```
-  -h, --help            
+  -h, --help
               Show this help message and exit.
-  -v, --version         
+  -v, --version
               Show program's version number and exit.
   -s SOURCEFILENAME, --source SOURCEFILENAME, --source-file SOURCEFILENAME
               Name of the source file to process. Default "pack.yaml"
@@ -84,7 +85,7 @@ mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [
               Port to use. Default 8080, use 0 to select a random available port.
   -c CORS, --cors CORS  
               Sets the Access-Control-Allow-Origin header. Default *
-  --host HOST           
+  --host HOST
               Hostname to bind to. Defaults to system name
   -l MINLOGLEVEL, --log MINLOGLEVEL, --log-level MINLOGLEVEL
               Minimum log level to show. Default "debug"
@@ -115,7 +116,7 @@ mpack split [-h] [-s SOURCEFILENAME] [-d DESTFILENAME]
 
 ## Project Setup
 
-To start a new Pack create a new folder, then create a package.json file in the new folder.  Copy the below template and update the values in to package.json:
+To start a new Pack create a new folder, then create a package.json file in the new folder. Copy the below template and update the values in to package.json:
 
 ```
 {
@@ -125,12 +126,12 @@ To start a new Pack create a new folder, then create a package.json file in the 
   "repository": "The repo that belongs to your pack",
   "author": "Your Name <your@email.com>",
   "scripts": {
-    "build": "mpack build",
-    "test": "mpack test",
-    "doc": "mpack doc"
+    "build": "npx @martingale/packs build",
+    "test": "npx @martingale/packs test",
+    "doc": "npx @martingale/packs doc"
   },
   "dependencies": {
-    "martingale-pack-builder": "^0.0.1"
+    "@martingale/packs": "^0.0.1"
   },
   "license": "MIT"
 }
@@ -150,6 +151,6 @@ yarn install
 
 You can now use:
 
- * "yarn/npm test" to test your pack locally.
- * "yarn/npm build" command to create a production build of your pack.
- * "yarn/npm doc" to generate the documentation for your pack.
+- "yarn/npm test" to test your pack locally.
+- "yarn/npm build" command to create a production build of your pack.
+- "yarn/npm doc" to generate the documentation for your pack.
