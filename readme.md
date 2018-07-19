@@ -13,7 +13,7 @@ Used to create a readme.md from the pack definition file.
 From within your Pack source folder:
 
 ```
-mpack doc [-h] [-s SOURCEFILENAME] [-d DESTFILENAME] [-t TEMPLATEFILE]
+npx @martingale/packs doc [-h] [-s SOURCEFILENAME] [-d DESTFILENAME] [-t TEMPLATEFILE]
 ```
 
 #### Optional arguments:
@@ -38,7 +38,7 @@ Used to compile raw pack files into an official yaml or json pack file.
 From within your Pack source folder:
 
 ```
-mpack build [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-l MINLOGLEVEL]
+npx @martingale/packs build [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-o OUTPUTFORMAT] [-l MINLOGLEVEL]
 ```
 
 #### Optional arguments:
@@ -67,7 +67,7 @@ Used to provide a simple web server based distribution for testing your pack loc
 From within your Pack source folder:
 
 ```
-mpack test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [--host HOST] [-l MINLOGLEVEL]
+npx @martingale/packs test [-h] [-v] [-s SOURCEFILENAME] [-d DESTFILENAME] [-p PORT] [-c CORS] [--host HOST] [-l MINLOGLEVEL]
 ```
 
 #### Optional arguments:
@@ -100,7 +100,7 @@ Used to split an existing pack file back in to manageable source files.
 From within your Pack source folder:
 
 ```
-mpack split [-h] [-s SOURCEFILENAME] [-d DESTFILENAME]
+npx @martingale/packs split [-h] [-s SOURCEFILENAME] [-d DESTFILENAME]
 ```
 
 #### Optional arguments:
@@ -126,12 +126,12 @@ To start a new Pack create a new folder, then create a package.json file in the 
   "repository": "The repo that belongs to your pack",
   "author": "Your Name <your@email.com>",
   "scripts": {
-    "build": "npx @martingale/packs build",
-    "test": "npx @martingale/packs test",
-    "doc": "npx @martingale/packs doc"
+    "build": "npx npx @martingale/packs build",
+    "test": "npx npx @martingale/packs test",
+    "doc": "npx npx @martingale/packs doc"
   },
   "dependencies": {
-    "@martingale/packs": "^0.0.1"
+    "npx @martingale/packs": "^0.0.1"
   },
   "license": "MIT"
 }

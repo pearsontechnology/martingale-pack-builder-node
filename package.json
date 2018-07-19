@@ -6,9 +6,7 @@
   "main": "build.js",
   "author": "Jeremy Darling <jeremy.darling@pearson.com>",
   "license": "Apache-2.0",
-  "bin": {
-    "mpack": "bin/mp.js"
-  },
+  "bin": "bin/mp.js",
   "dependencies": {
     "argparse": "^1.0.9",
     "async": "^2.5.0",
