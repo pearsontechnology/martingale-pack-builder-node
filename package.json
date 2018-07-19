@@ -1,8 +1,7 @@
 {
   "name": "@martingale/packs",
-  "version": "0.0.1",
-  "description":
-    "Used to compile raw pack files into an official yaml or json pack file",
+  "version": "0.0.2",
+  "description": "Used to compile raw pack files into an official yaml or json pack file",
   "main": "build.js",
   "author": "Jeremy Darling <jeremy.darling@pearson.com>",
   "license": "Apache-2.0",
